@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\zwartlab-users\\Documents\\GitHub\\Bonsai.Ximea\\Bonsai.Ximea\\Bonsai.Ximea.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\zwartlab-users\\Documents\\GitHub\\Bonsai.Ximea\\Bonsai.Ximea\\Bonsai.Ximea.csproj": {
+      "version": "0.1.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zwartlab-users\\Documents\\GitHub\\Bonsai.Ximea\\Bonsai.Ximea\\Bonsai.Ximea.csproj",
+        "projectName": "Bonsai.Ximea",
+        "projectPath": "C:\\Users\\zwartlab-users\\Documents\\GitHub\\Bonsai.Ximea\\Bonsai.Ximea\\Bonsai.Ximea.csproj",
+        "packagesPath": "C:\\Users\\zwartlab-users\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zwartlab-users\\Documents\\GitHub\\Bonsai.Ximea\\Bonsai.Ximea\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zwartlab-users\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Bonsai.Core": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "OpenCV.Net": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
