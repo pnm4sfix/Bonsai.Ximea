@@ -25,8 +25,14 @@
     <Reference Include="PresentationCore" />
     <Reference Include="WindowsBase" />
     <Reference Include="xiApi.NETX64">
-      <HintPath>..\..\..\..\..\..\XIMEA\API\64bit\xiApi.NETX64.dll</HintPath>
+      <HintPath>xiApi.NETX64.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="xiapi64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

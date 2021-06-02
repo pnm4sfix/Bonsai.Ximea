@@ -1,0 +1,17 @@
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\Bonsai.Ximea.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\Bonsai.Ximea.pdb
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\Bonsai.Core.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\OpenCV.Net.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\System.Reactive.Core.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\System.Reactive.Interfaces.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\System.Reactive.Linq.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\xiApi.NETX64.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\xiApi.NETX64.xml
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.csprojAssemblyReference.cache
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.AssemblyInfoInputs.cache
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.AssemblyInfo.cs
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.csproj.CoreCompileInputs.cache
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.csproj.CopyComplete
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.dll
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\obj\Debug\net472\Bonsai.Ximea.pdb
+C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Debug\net472\xiapi64.dll

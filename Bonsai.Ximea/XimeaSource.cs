@@ -11,13 +11,13 @@ using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Media.Imaging;
-//using OpenCvSharp;
-using xiApi.NET;
 
+using xiApi.NET;
+ 
 
 namespace Bonsai.Ximea
 {
-    [Description("Generates a sequence of images acquired from the specified PSEye camera.")]
+    [Description("Generates a sequence of images acquired from the specified Ximea camera.")]
     [Combinator(MethodName = nameof(Generate))]
     [WorkflowElementCategory(ElementCategory.Source)]
     public class XimeaSource: Source<IplImage>
@@ -29,8 +29,8 @@ namespace Bonsai.Ximea
         Bitmap frame;
         //IplImage image = new IplImage(frame.Width, frame.Height, frame.depth, 1);
         IplImage output;
-        Array array;
-        OpenCV.Net.Arr arr;
+        //Array array;
+        //OpenCV.Net.Arr arr;
         public int width, height;
         int gain;
         int exposure;
@@ -45,10 +45,10 @@ namespace Bonsai.Ximea
         {
             //ColorMode = CLEyeCameraColorMode.CLEYE_COLOR_RAW;
             //Resolution = CLEyeCameraResolution.CLEYE_VGA;
-            FrameRate = 60;
+            //FrameRate = 60;
 
             //AutoWhiteBalance = true;
-            Exposure = 511;
+            //Exposure = 511;
 
             source = Observable.Create<IplImage>((observer, cancellationToken) =>
             {
@@ -66,7 +66,7 @@ namespace Bonsai.Ximea
                                 //var frameBmp = frm.Bitmap; // this is the bitmap from that object
 
                                 
-                                myCam.GetImage(out frame, 100);
+                                myCam.GetImage(out frame, 1000);
                                 // Lock the bitmap's bits. 
                                 Rectangle rect = new Rectangle(0, 0, frame.Width, frame.Height);
                                 System.Drawing.Imaging.BitmapData imgData = frame.LockBits
@@ -111,8 +111,8 @@ namespace Bonsai.Ximea
         //[Description("The optional GUID used to uniquely identify the acquisition camera.")]
         //public Guid? CameraGuid { get; set; }
 
-        [Description("The camera index used to find a camera, in case no GUID is specified.")]
-        public int CameraIndex { get; set; }
+        //[Description("The camera index used to find a camera, in case no GUID is specified.")]
+        //public int CameraIndex { get; set; }
 
         //[Description("The camera color processing mode.")]
         //public CLEyeCameraColorMode ColorMode { get; set; }
@@ -120,8 +120,8 @@ namespace Bonsai.Ximea
         //[Description("The camera acquisition resolution.")]
         //public CLEyeCameraResolution Resolution { get; set; }
 
-        [Description("The frame rate at which to acquire image frames.")]
-        public float FrameRate { get; set; }
+        //[Description("The frame rate at which to acquire image frames.")]
+        //public float FrameRate { get; set; }
 
         //[Description("Indicates whether auto gain calibration should be used.")]
         //public bool AutoGain
@@ -153,26 +153,7 @@ namespace Bonsai.Ximea
          //   }
         //}
 
-        [Description("Indicates whether auto white balance calibration should be used.")]
-        public int AutoWhiteBalance
-        {
-            get { return autoWhiteBalance; }
-            set
-            {
-                autoWhiteBalance = value;
-                //if (camera != IntPtr.Zero)
-                //{
-                //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_AUTO_WHITEBALANCE, value ? 1 : 0);
-                myCam.SetParam(PRM.AUTO_WB, value);
-                if (autoWhiteBalance==0)
-                {
-                    WhiteBalanceRed = whiteBalanceRed;
-                    WhiteBalanceGreen = whiteBalanceGreen;
-                    WhiteBalanceBlue = whiteBalanceBlue;
-                }
-                
-            }
-        }
+        
 
         [Range(0, 79)]
         [Description("The fixed gain value, used when auto gain is disabled.")]
@@ -183,7 +164,7 @@ namespace Bonsai.Ximea
             set
             {
                 gain = value;
-                //if (camera != IntPtr.Zero)
+        //        //if (camera != IntPtr.Zero)
                 //{
                 //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_GAIN, value);
                 //}
@@ -200,11 +181,12 @@ namespace Bonsai.Ximea
             set
             {
                 exposure = value;
-                //if (camera != IntPtr.Zero)
-                //{
+        //        //if (camera != IntPtr.Zero)
+        //        //{
                 //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_EXPOSURE, value);
                 //}
-                myCam.SetParam(PRM.EXPOSURE, value);
+                myCam.SetParam(PRM.EXPOSURE, (Int32)value);
+                
             }
         }
 
@@ -232,7 +214,7 @@ namespace Bonsai.Ximea
         {
             get { return whiteBalanceGreen; }
             set
-            {
+           {
                 whiteBalanceGreen = value;
                 //if (camera != IntPtr.Zero)
                 //{
@@ -253,7 +235,7 @@ namespace Bonsai.Ximea
                 whiteBalanceBlue = value;
                 //if (camera != IntPtr.Zero)
                 //{
-                myCam.SetParam(PRM.WB_KB, value);
+              //  myCam.SetParam(PRM.WB_KB, value);
                 //CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_WHITEBALANCE_BLUE, value);
                 //}
             }
@@ -261,11 +243,24 @@ namespace Bonsai.Ximea
 
         private void Load()
         {
-            myCam.OpenDevice(CameraIndex);
+            int numDevices = 0;
+            myCam.GetNumberDevices(out numDevices);
+
+            if (0 == numDevices)
+            {
+                Console.WriteLine("No devices found");
+                Thread.Sleep(3000);
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Found {0} connected devices.", numDevices);
+            }
+            myCam.OpenDevice(0);
 
 
             
-            myCam.SetParam(PRM.EXPOSURE, exposure);
+            myCam.SetParam(PRM.EXPOSURE, 1000);
             // Set device gain to 5 decibels
             float gain_db = 5;
             myCam.SetParam(PRM.GAIN, gain_db);
@@ -294,11 +289,11 @@ namespace Bonsai.Ximea
 
             //AutoGain = autoGain;
             //AutoExposure = autoExposure;
-            AutoWhiteBalance = autoWhiteBalance;
-            Gain = gain;
-            Exposure = exposure;
-            WhiteBalanceRed = whiteBalanceRed;
-            WhiteBalanceGreen = whiteBalanceGreen;
+            //AutoWhiteBalance = autoWhiteBalance;
+            //Gain = gain;
+            //Exposure = exposure;
+            //WhiteBalanceRed = whiteBalanceRed;
+            //WhiteBalanceGreen = whiteBalanceGreen;
             WhiteBalanceBlue = whiteBalanceBlue;
 
             
