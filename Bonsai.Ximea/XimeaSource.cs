@@ -120,8 +120,8 @@ namespace Bonsai.Ximea
         //[Description("The camera acquisition resolution.")]
         //public CLEyeCameraResolution Resolution { get; set; }
 
-        //[Description("The frame rate at which to acquire image frames.")]
-        //public float FrameRate { get; set; }
+        [Description("The frame rate at which to acquire image frames.")]
+        public float FrameRate { get; set; }
 
         //[Description("Indicates whether auto gain calibration should be used.")]
         //public bool AutoGain
@@ -267,7 +267,8 @@ namespace Bonsai.Ximea
 
             // Set image output format to monochrome 8 bit
             myCam.SetParam(PRM.IMAGE_DATA_FORMAT, IMG_FORMAT.MONO8);
-
+            //myCam.SetParam(PRM.BUFFER_POLICY, BUFF_POLICY.SAFE);
+            //myCam.SetParam(PRM.FRAMERATE, (Int32)1);
             //Start acquisition
             myCam.StartAcquisition();
 
@@ -299,6 +300,7 @@ namespace Bonsai.Ximea
             
             myCam.GetParam(PRM.HEIGHT, out height);
             myCam.GetParam(PRM.WIDTH, out width);
+            
             //CLEye.CLEyeCameraGetFrameDimensions(camera, out width, out height);
 
             //switch (ColorMode)
