@@ -9,6 +9,9 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Reactive.Disposables;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Media.Imaging;
+//using OpenCvSharp;
 using xiApi.NET;
 
 
@@ -23,9 +26,12 @@ namespace Bonsai.Ximea
         IObservable<IplImage> source;
         IntPtr camera;
         xiCam myCam = new xiCam();
-        IplImage image;
+        Bitmap frame;
+        //IplImage image = new IplImage(frame.Width, frame.Height, frame.depth, 1);
         IplImage output;
-
+        Array array;
+        OpenCV.Net.Arr arr;
+        public int width, height;
         int gain;
         int exposure;
         int whiteBalanceRed;
@@ -56,20 +62,39 @@ namespace Bonsai.Ximea
                             while (!cancellationToken.IsCancellationRequested)
                             {
 
-                                var frameBmp = frm.Bitmap; // this is the bitmap from that object
+                                
+                                //var frameBmp = frm.Bitmap; // this is the bitmap from that object
 
-                                Frame = new IplImage(frameBmp.Width, frameBmp.Height, BitDepth.U8, 3);  //creates the OpenCvSharp IplImage;
-                                Frame.CopyFrom(frameBmp); // copies the bitmap data to the IplImage
-                                myCam.GetImage(out output, 100);
+                                
+                                myCam.GetImage(out frame, 100);
+                                // Lock the bitmap's bits. 
+                                Rectangle rect = new Rectangle(0, 0, frame.Width, frame.Height);
+                                System.Drawing.Imaging.BitmapData imgData = frame.LockBits
+                                (rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, frame.PixelFormat);
+
+                                IntPtr ptr = imgData.Scan0;
+
+                                
+
+                                OpenCV.Net.Size outSize = new OpenCV.Net.Size(frame.Width, frame.Height);
+                                output = new IplImage(outSize, OpenCV.Net.IplDepth.U8, 1, ptr);
+                                //output = new IplImage(frame.Width, frame.Height, BitDepth.U8, 1);
+                                //Frame = new IplImage(frame.Width, frame.Height, BitDepth.U8, 3);  //creates the OpenCvSharp IplImage;
+                                //output.
+                                //output.CopyFrom(frame); // copies the bitmap data to the IplImage
                                 //if (CLEye.CLEyeCameraGetFrame(camera, image.ImageData, 500))
                                 //{
                                 //    if (image.Channels == 4)
                                 //   {
                                 //        CV.CvtColor(image, output, ColorConversion.Bgra2Bgr);
                                 //    }
-
+                                //frame.CopyPixels(array, 1, 0);
+                                //OpenCV.Net.CV.ConvertImage(array, output);
                                 observer.OnNext(output.Clone());
-                                
+                                frame.UnlockBits(imgData);
+                                //array.CopyTo(arr, 0);
+
+
                             }
                         }
                         finally { Unload(); }
@@ -268,7 +293,7 @@ namespace Bonsai.Ximea
             //}
 
             //AutoGain = autoGain;
-            A//utoExposure = autoExposure;
+            //AutoExposure = autoExposure;
             AutoWhiteBalance = autoWhiteBalance;
             Gain = gain;
             Exposure = exposure;
@@ -276,7 +301,7 @@ namespace Bonsai.Ximea
             WhiteBalanceGreen = whiteBalanceGreen;
             WhiteBalanceBlue = whiteBalanceBlue;
 
-            int width, height;
+            
             myCam.GetParam(PRM.HEIGHT, out height);
             myCam.GetParam(PRM.WIDTH, out width);
             //CLEye.CLEyeCameraGetFrameDimensions(camera, out width, out height);
