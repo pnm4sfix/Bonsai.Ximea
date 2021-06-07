@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[2.6.0, )"
             },
+            "Bonsai.Dsp": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "Bonsai.Dsp.Design": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
             "OpenCV.Net": {
               "target": "Package",
               "version": "[3.3.1, )"

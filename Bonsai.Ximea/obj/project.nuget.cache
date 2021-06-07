@@ -1,14 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "zv9qnfWGPwfZnOrIZjFtw34jeKNvzdFIY2y++gMOId1viYsKLEcU5UQzRBYwJ1Tei0KT3uSefrVeKjlsjk6HPQ==",
+  "dgSpecHash": "g2tvavoV4DP1Tra9djvFlGgh1to1rV8yp3OzMqhpNx1t/RBSwBTAOc7YnkpT2wTBK9lQdT54uOFQai7EQvw4HQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\zwartlab-users\\Documents\\GitHub\\Bonsai.Ximea\\Bonsai.Ximea\\Bonsai.Ximea.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zwartlab-users\\.nuget\\packages\\bonsai.core\\2.6.0\\bonsai.core.2.6.0.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\bonsai.design\\2.6.0\\bonsai.design.2.6.0.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\bonsai.design.visualizers\\2.6.0\\bonsai.design.visualizers.2.6.0.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\bonsai.dsp\\2.6.0\\bonsai.dsp.2.6.0.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\bonsai.dsp.design\\2.6.0\\bonsai.dsp.design.2.6.0.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\bonsai.system\\2.6.0\\bonsai.system.2.6.0.nupkg.sha512",
     "C:\\Users\\zwartlab-users\\.nuget\\packages\\opencv.net\\3.3.1\\opencv.net.3.3.1.nupkg.sha512",
     "C:\\Users\\zwartlab-users\\.nuget\\packages\\rx-core\\2.2.5\\rx-core.2.2.5.nupkg.sha512",
     "C:\\Users\\zwartlab-users\\.nuget\\packages\\rx-interfaces\\2.2.5\\rx-interfaces.2.2.5.nupkg.sha512",
-    "C:\\Users\\zwartlab-users\\.nuget\\packages\\rx-linq\\2.2.5\\rx-linq.2.2.5.nupkg.sha512"
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\rx-linq\\2.2.5\\rx-linq.2.2.5.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\rx-platformservices\\2.2.5\\rx-platformservices.2.2.5.nupkg.sha512",
+    "C:\\Users\\zwartlab-users\\.nuget\\packages\\zedgraph\\5.1.7\\zedgraph.5.1.7.nupkg.sha512"
   ],
   "logs": []
 }

@@ -14,6 +14,73 @@
           "lib/net462/Bonsai.Core.dll": {}
         }
       },
+      "Bonsai.Design/2.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Bonsai.Core": "2.6.0"
+        },
+        "frameworkAssemblies": [
+          "System.Design"
+        ],
+        "compile": {
+          "lib/net462/Bonsai.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net462/Bonsai.Design.dll": {}
+        }
+      },
+      "Bonsai.Design.Visualizers/2.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Bonsai.Design": "2.6.0",
+          "ZedGraph": "5.1.7"
+        },
+        "compile": {
+          "lib/net462/Bonsai.Design.Visualizers.dll": {}
+        },
+        "runtime": {
+          "lib/net462/Bonsai.Design.Visualizers.dll": {}
+        }
+      },
+      "Bonsai.Dsp/2.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Bonsai.System": "2.6.0",
+          "OpenCV.Net": "3.3.1"
+        },
+        "compile": {
+          "lib/net462/Bonsai.Dsp.dll": {}
+        },
+        "runtime": {
+          "lib/net462/Bonsai.Dsp.dll": {}
+        }
+      },
+      "Bonsai.Dsp.Design/2.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Bonsai.Design.Visualizers": "2.6.0",
+          "Bonsai.Dsp": "2.6.0"
+        },
+        "compile": {
+          "lib/net462/Bonsai.Dsp.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net462/Bonsai.Dsp.Design.dll": {}
+        }
+      },
+      "Bonsai.System/2.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Bonsai.Core": "2.6.0",
+          "Rx-PlatformServices": "2.2.5"
+        },
+        "compile": {
+          "lib/net462/Bonsai.System.dll": {}
+        },
+        "runtime": {
+          "lib/net462/Bonsai.System.dll": {}
+        }
+      },
       "OpenCV.Net/3.3.1": {
         "type": "package",
         "compile": {
@@ -60,6 +127,69 @@
         "runtime": {
           "lib/net45/System.Reactive.Linq.dll": {}
         }
+      },
+      "Rx-PlatformServices/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "Rx-Core": "2.2.5",
+          "Rx-Interfaces": "2.2.5"
+        },
+        "compile": {
+          "lib/net45/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "ZedGraph/5.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "runtime": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "resource": {
+          "lib/net35-Client/de/ZedGraph.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35-Client/es/ZedGraph.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35-Client/fr/ZedGraph.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35-Client/hu/ZedGraph.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net35-Client/it/ZedGraph.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35-Client/ja/ZedGraph.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net35-Client/pt/ZedGraph.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35-Client/ru/ZedGraph.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35-Client/sk/ZedGraph.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35-Client/sv/ZedGraph.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35-Client/tr/ZedGraph.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35-Client/zh-cn/ZedGraph.resources.dll": {
+            "locale": "zh-cn"
+          },
+          "lib/net35-Client/zh-tw/ZedGraph.resources.dll": {
+            "locale": "zh-tw"
+          }
+        }
       }
     }
   },
@@ -77,6 +207,66 @@
         "lib/net462/Bonsai.Core.xml"
       ]
     },
+    "Bonsai.Design/2.6.0": {
+      "sha512": "zFtPnJY465Y4XTU/DhHhNNoql0iRIB2uyLXCUPB2R8cWHFGw4JCZMfhh0Hbr8DjM7466SzRytrx3wWBVoJXn3w==",
+      "type": "package",
+      "path": "bonsai.design/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bonsai.design.2.6.0.nupkg.sha512",
+        "bonsai.design.nuspec",
+        "lib/net462/Bonsai.Design.dll"
+      ]
+    },
+    "Bonsai.Design.Visualizers/2.6.0": {
+      "sha512": "+rBdypp+xQqJMTxZhnCiNpOle76gZNuH3ya8V9oKE/rYJ1NFY7Pv+694t0APGUOoYiUAS2GcmG4N4Vh08rMkyw==",
+      "type": "package",
+      "path": "bonsai.design.visualizers/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bonsai.design.visualizers.2.6.0.nupkg.sha512",
+        "bonsai.design.visualizers.nuspec",
+        "lib/net462/Bonsai.Design.Visualizers.dll"
+      ]
+    },
+    "Bonsai.Dsp/2.6.0": {
+      "sha512": "koBPAMb8DMd3ATj4dWqKsTWsEwqL1pFCzYbk8w+1Kt6ca12yFA1VJso8cCUG4bwA3bCbl91++DO+1Azg3jgWyg==",
+      "type": "package",
+      "path": "bonsai.dsp/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bonsai.dsp.2.6.0.nupkg.sha512",
+        "bonsai.dsp.nuspec",
+        "lib/net462/Bonsai.Dsp.dll"
+      ]
+    },
+    "Bonsai.Dsp.Design/2.6.0": {
+      "sha512": "L4X4ndxLerqAvv6BTyRulUeuWY3y9OOwUhe484mbXXlIQCy8orHReWuAM3N/3js2KmLWNCliYPFqGDzhsm0o6g==",
+      "type": "package",
+      "path": "bonsai.dsp.design/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bonsai.dsp.design.2.6.0.nupkg.sha512",
+        "bonsai.dsp.design.nuspec",
+        "lib/net462/Bonsai.Dsp.Design.dll"
+      ]
+    },
+    "Bonsai.System/2.6.0": {
+      "sha512": "1aRPl7pjbTblTABaGQW8Ug6ES6etW8oxZfFG623D8kX9xe+nxeFauXIqZzG0+otiROXkc2walza6s1LCsgH8mA==",
+      "type": "package",
+      "path": "bonsai.system/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bonsai.system.2.6.0.nupkg.sha512",
+        "bonsai.system.nuspec",
+        "lib/net462/Bonsai.System.dll"
+      ]
+    },
     "OpenCV.Net/3.3.1": {
       "sha512": "PxgYBkIJJqbGv4qVHEerS78F7znkrzh4zHzKF9zPM8qH3V6rCgXpUJYkUqw09KAtf+CM1SEWySCRmLAF0NmjMw==",
       "type": "package",
@@ -89,6 +279,7 @@
         "build/native/private/CoApp.NuGetNativeExtensions.dll",
         "build/native/private/CoApp.NuGetNativeMSBuildTasks.dll.orig",
         "build/native/private/NuGet.exe",
+        "build/native/private/coapp.NuGetNativeMSBuildTasks.dll",
         "build/net40/OpenCV.Net.props",
         "build/net40/OpenCV.Net.targets",
         "lib/net40/OpenCV.Net.dll",
@@ -189,11 +380,71 @@
         "rx-linq.2.2.5.nupkg.sha512",
         "rx-linq.nuspec"
       ]
+    },
+    "Rx-PlatformServices/2.2.5": {
+      "sha512": "pMnNEvJVjT+wuDib+W/bi5hhIYcre7dW5yxvKrJxnR4iKJ1VLA/dY2FTtjDriHGx7OeGn12lQewXlH2oHiWFPA==",
+      "type": "package",
+      "path": "rx-platformservices/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/System.Reactive.PlatformServices.XML",
+        "lib/net40/System.Reactive.PlatformServices.dll",
+        "lib/net45/System.Reactive.PlatformServices.XML",
+        "lib/net45/System.Reactive.PlatformServices.dll",
+        "lib/portable-net40+sl5+win8+wp8/System.Reactive.PlatformServices.XML",
+        "lib/portable-net40+sl5+win8+wp8/System.Reactive.PlatformServices.dll",
+        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.PlatformServices.XML",
+        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.PlatformServices.dll",
+        "lib/portable-win81+wpa81/System.Reactive.PlatformServices.XML",
+        "lib/portable-win81+wpa81/System.Reactive.PlatformServices.dll",
+        "lib/portable-windows8+net45+wp8/System.Reactive.PlatformServices.XML",
+        "lib/portable-windows8+net45+wp8/System.Reactive.PlatformServices.dll",
+        "lib/sl5/System.Reactive.PlatformServices.XML",
+        "lib/sl5/System.Reactive.PlatformServices.dll",
+        "lib/windows8/System.Reactive.PlatformServices.XML",
+        "lib/windows8/System.Reactive.PlatformServices.dll",
+        "lib/windowsphone71/System.Reactive.PlatformServices.XML",
+        "lib/windowsphone71/System.Reactive.PlatformServices.dll",
+        "lib/windowsphone8/System.Reactive.PlatformServices.XML",
+        "lib/windowsphone8/System.Reactive.PlatformServices.dll",
+        "rx-platformservices.2.2.5.nupkg.sha512",
+        "rx-platformservices.nuspec"
+      ]
+    },
+    "ZedGraph/5.1.7": {
+      "sha512": "TcZaInxUjYMJDWIaYvs/CgpssfVJQMqiry8GPP70klyheP4tYSQXFWi5HYwJvqao+epeUu3bsk3yDb3Nf/hVWw==",
+      "type": "package",
+      "path": "zedgraph/5.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/License-LGPL.txt",
+        "lib/net35-Client/ZedGraph.XML",
+        "lib/net35-Client/ZedGraph.dll",
+        "lib/net35-Client/de/ZedGraph.resources.dll",
+        "lib/net35-Client/es/ZedGraph.resources.dll",
+        "lib/net35-Client/fr/ZedGraph.resources.dll",
+        "lib/net35-Client/hu/ZedGraph.resources.dll",
+        "lib/net35-Client/it/ZedGraph.resources.dll",
+        "lib/net35-Client/ja/ZedGraph.resources.dll",
+        "lib/net35-Client/pt/ZedGraph.resources.dll",
+        "lib/net35-Client/ru/ZedGraph.resources.dll",
+        "lib/net35-Client/sk/ZedGraph.resources.dll",
+        "lib/net35-Client/sv/ZedGraph.resources.dll",
+        "lib/net35-Client/tr/ZedGraph.resources.dll",
+        "lib/net35-Client/zh-cn/ZedGraph.resources.dll",
+        "lib/net35-Client/zh-tw/ZedGraph.resources.dll",
+        "zedgraph.5.1.7.nupkg.sha512",
+        "zedgraph.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "Bonsai.Core >= 2.6.0",
+      "Bonsai.Dsp >= 2.6.0",
+      "Bonsai.Dsp.Design >= 2.6.0",
       "OpenCV.Net >= 3.3.1"
     ]
   },
@@ -242,6 +493,14 @@
         "targetAlias": "net472",
         "dependencies": {
           "Bonsai.Core": {
+            "target": "Package",
+            "version": "[2.6.0, )"
+          },
+          "Bonsai.Dsp": {
+            "target": "Package",
+            "version": "[2.6.0, )"
+          },
+          "Bonsai.Dsp.Design": {
             "target": "Package",
             "version": "[2.6.0, )"
           },

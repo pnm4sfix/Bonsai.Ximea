@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Bonsai.Ximea</id>
+    <version>0.1.0</version>
+    <title>Bonsai.Ximea</title>
+    <authors>Bonsai.Ximea</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A package for the Bonsai visual programming language.</description>
+    <copyright>Copyright ©  2021</copyright>
+    <tags>Bonsai Rx Bonsai.Ximea</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Bonsai.Core" version="2.6.0" exclude="Build,Analyzers" />
+        <dependency id="Bonsai.Dsp" version="2.6.0" exclude="Build,Analyzers" />
+        <dependency id="Bonsai.Dsp.Design" version="2.6.0" exclude="Build,Analyzers" />
+        <dependency id="OpenCV.Net" version="3.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework=".NETFramework4.7.2" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="C:\Users\zwartlab-users\Documents\GitHub\Bonsai.Ximea\Bonsai.Ximea\bin\Release\net472\Bonsai.Ximea.dll" target="lib\net472\Bonsai.Ximea.dll" />
+  </files>
+</package>
