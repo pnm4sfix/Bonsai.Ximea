@@ -33,6 +33,7 @@ namespace Bonsai.Ximea
         //OpenCV.Net.Arr arr;
         public int width, height;
         int gain;
+        float framerate;
         int exposure;
         int whiteBalanceRed;
         int whiteBalanceGreen;
@@ -40,15 +41,25 @@ namespace Bonsai.Ximea
         bool autoGain;
         bool autoExposure;
         int autoWhiteBalance;
+        
+        bool deviceOpen = false;
 
         public XimeaSource()
         {
             //ColorMode = CLEyeCameraColorMode.CLEYE_COLOR_RAW;
             //Resolution = CLEyeCameraResolution.CLEYE_VGA;
-            //FrameRate = 60;
+            FrameRate = 60;
 
             //AutoWhiteBalance = true;
-            //Exposure = 511;
+            Exposure = 1226;
+
+            OffsetX = 432;
+            OffsetY = 40;
+
+            ROIWidth = 1000;
+            ROIHeight = 988;
+
+
 
             source = Observable.Create<IplImage>((observer, cancellationToken) =>
             {
@@ -114,46 +125,36 @@ namespace Bonsai.Ximea
         //[Description("The camera index used to find a camera, in case no GUID is specified.")]
         //public int CameraIndex { get; set; }
 
-        //[Description("The camera color processing mode.")]
-        //public CLEyeCameraColorMode ColorMode { get; set; }
 
-        //[Description("The camera acquisition resolution.")]
-        //public CLEyeCameraResolution Resolution { get; set; }
-
+        [Range(0, 500)]
         [Description("The frame rate at which to acquire image frames.")]
-        public float FrameRate { get; set; }
+        [Editor(DesignTypes.SliderEditor, "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        public float FrameRate 
+        { 
+            get { return framerate; }
 
-        //[Description("Indicates whether auto gain calibration should be used.")]
-        //public bool AutoGain
-        //{
-        //    get { return autoGain; }
-        //    set
-        //    {
-        //        autoGain = value;
-        //        if (camera != IntPtr.Zero)
-        //        {
-        //            CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_AUTO_GAIN, value ? 1 : 0);
-        //            if (!autoGain) Gain = gain;
-        //       }
-        //    }
-        //}
+            set 
+            {
+                framerate = value;
+                if (deviceOpen)
+                {
+                    myCam.SetParam(PRM.FRAMERATE, value);
+                }
+            } }
 
-        //[Description("Indicates whether auto exposure should be used.")]
-        //public bool AutoExposure
-        //{
-        //   get { return autoExposure; }
-        //    set
-        //    {
-        //        autoExposure = value;
-        //        if (camera != IntPtr.Zero)
-        //        {
-        //            CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_AUTO_EXPOSURE, value ? 1 : 0);
-         //           if (!autoExposure) Exposure = exposure;
-         //       }
-         //   }
-        //}
 
-        
+
+        [Description("The ROI width at which to acquire image frames.")]
+        public int ROIWidth { get; set; }
+
+        [Description("The frame height at which to acquire image frames.")]
+        public int ROIHeight { get; set; }
+
+        [Description("The ROI offset in X axis at which to acquire image frames.")]
+        public int OffsetX { get; set; }
+
+        [Description("The ROI offset in Y axis at which to acquire image frames.")]
+        public int OffsetY { get; set; }
 
         [Range(0, 79)]
         [Description("The fixed gain value, used when auto gain is disabled.")]
@@ -164,11 +165,12 @@ namespace Bonsai.Ximea
             set
             {
                 gain = value;
-        //        //if (camera != IntPtr.Zero)
-                //{
-                //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_GAIN, value);
-                //}
-                myCam.SetParam(PRM.GAIN, value);
+                if (deviceOpen)
+                {
+                    myCam.SetParam(PRM.GAIN, value);
+                    //CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_GAIN, value);
+                }
+                
             }
         }
 
@@ -181,11 +183,12 @@ namespace Bonsai.Ximea
             set
             {
                 exposure = value;
-        //        //if (camera != IntPtr.Zero)
-        //        //{
-                //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_EXPOSURE, value);
-                //}
-                myCam.SetParam(PRM.EXPOSURE, (Int32)value);
+              if (deviceOpen)
+              {
+                    //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_EXPOSURE, value);
+                    myCam.SetParam(PRM.EXPOSURE, (Int32)value);
+              }
+                
                 
             }
         }
@@ -199,11 +202,12 @@ namespace Bonsai.Ximea
             set
             {
                 whiteBalanceRed = value;
-                //if (camera != IntPtr.Zero)
-                //{
-                //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_WHITEBALANCE_RED, value);
-                //}
-                myCam.SetParam(PRM.WB_KR, value);
+                if (deviceOpen)
+                {
+                    //    CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_WHITEBALANCE_RED, value);
+                    myCam.SetParam(PRM.WB_KR, value);
+                }
+                    
             }
         }
 
@@ -216,11 +220,12 @@ namespace Bonsai.Ximea
             set
            {
                 whiteBalanceGreen = value;
-                //if (camera != IntPtr.Zero)
-                //{
-                //CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_WHITEBALANCE_GREEN, value);
-                //}
-                myCam.SetParam(PRM.WB_KG, value);
+                if (deviceOpen)
+                {
+                    //CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_WHITEBALANCE_GREEN, value);
+                    myCam.SetParam(PRM.WB_KG, value);
+                }
+                
             }
         }
 
@@ -233,11 +238,11 @@ namespace Bonsai.Ximea
             set
             {
                 whiteBalanceBlue = value;
-                //if (camera != IntPtr.Zero)
-                //{
-              //  myCam.SetParam(PRM.WB_KB, value);
+                if (deviceOpen)
+                {
+                  myCam.SetParam(PRM.WB_KB, value);
                 //CLEye.CLEyeSetCameraParameter(camera, CLEyeCameraParameter.CLEYE_WHITEBALANCE_BLUE, value);
-                //}
+                }
             }
         }
 
@@ -258,17 +263,23 @@ namespace Bonsai.Ximea
             }
             myCam.OpenDevice(0);
 
-
+            deviceOpen = true;
             
-            myCam.SetParam(PRM.EXPOSURE, 1000);
+
+            myCam.SetParam(PRM.EXPOSURE, Exposure);
             // Set device gain to 5 decibels
-            float gain_db = 5;
-            myCam.SetParam(PRM.GAIN, gain_db);
+            //float gain_db = 0;
+            myCam.SetParam(PRM.GAIN, Gain);
 
             // Set image output format to monochrome 8 bit
             myCam.SetParam(PRM.IMAGE_DATA_FORMAT, IMG_FORMAT.MONO8);
             //myCam.SetParam(PRM.BUFFER_POLICY, BUFF_POLICY.SAFE);
-            //myCam.SetParam(PRM.FRAMERATE, (Int32)1);
+            myCam.SetParam(PRM.ACQ_TIMING_MODE, 1);
+            myCam.SetParam(PRM.FRAMERATE, FrameRate);
+            myCam.SetParam(PRM.WIDTH, ROIWidth);
+            myCam.SetParam(PRM.HEIGHT, ROIHeight);
+            myCam.SetParam(PRM.OFFSET_X, OffsetX);
+            myCam.SetParam(PRM.OFFSET_Y, OffsetY);
             //Start acquisition
             myCam.StartAcquisition();
 
@@ -331,6 +342,7 @@ namespace Bonsai.Ximea
 
             myCam.StopAcquisition();
             myCam.CloseDevice();
+            deviceOpen = false;
         }
 
         public override IObservable<IplImage> Generate()
